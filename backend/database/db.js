@@ -2,11 +2,13 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
+    const conn = await mongoose.connect(process.env.MONGO_URL, {
       dbName: "MERN-Social_media",
+      serverSelectionTimeoutMS: 10000,
     });
     console.log("Connected to MongoDB");
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
+    throw error;
   }
 };

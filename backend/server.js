@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./database/db.js";
 import cloudinary from "cloudinary";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const app = express();
 
 //Usig Middleware
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = process.env.PORT;
 
